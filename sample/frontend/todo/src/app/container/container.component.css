@@ -1,0 +1,8 @@
+.container {
+  pointer-events: all;
+}
+
+.display-flex {
+  pointer-events: all;
+  z-index: 10;
+}
