@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -18,21 +18,24 @@ export class AppComponent {
     title: string = '';
     desc: string = '';
   arr: Todos[] = [];
-  onSubmit(event: Event) {
+onSubmit(event: Event) {
       event.preventDefault(); // Prevent form submission
       console.log('Search submitted!');
-    }
+}
 showModal: boolean = false;
-
+ @Output() editModal: boolean = false;
     onClick():void {
     this.showModal = true;
      console.log('SVG clicked!');
     }
    onClose(): void {
-      this.showModal = false; // Close modal when needed
+      this.showModal = false;
     }
   addTodo(todo: Todos): void {
       this.arr.push(todo);
-      console.log(this.arr); // Check length here
+      console.log(this.arr);
+    }
+  editClose(){
+    this.editModal=false;
     }
 }

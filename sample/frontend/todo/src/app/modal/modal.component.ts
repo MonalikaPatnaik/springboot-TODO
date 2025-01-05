@@ -28,7 +28,6 @@ export class ModalComponent {
     const newTodo : Todos ={ title: this.title, desc: this.desc };
     this.save.emit(newTodo);
      this.closeModal();
-//      this.sendarray.emit(this.arr);
   }
 
 

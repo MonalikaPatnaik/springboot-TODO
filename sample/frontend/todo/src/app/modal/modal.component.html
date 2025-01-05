@@ -1,16 +1,12 @@
 <div class="modal" tabindex="-1" aria-labelledby="exampleModalLabel">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-
-<!--        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>-->
-
-
       <form >
         <div class="modal-header">
         <input  [(ngModel)]="title" name="title" class="form-control m-3 modal-title fs-5" id="title" placeholder="Enter title"/>
           <button (click)="closeModal()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <input [(ngModel)]="desc" name="desc" class="form-control m-3" id="body" placeholder="Enter description"/>
+        <input [(ngModel)]="desc" name="desc" class="form-control m-3" style="width:90%" id="body" placeholder="Enter description"/>
 
       <div class="modal-footer">
         <button (click)="closeModal()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
