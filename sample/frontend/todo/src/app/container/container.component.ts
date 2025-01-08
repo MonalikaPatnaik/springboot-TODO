@@ -1,21 +1,25 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import {EditmodalComponent} from '../editmodal/editmodal.component';
-type Todo={
-  title:string;
-  desc:string;
-  };
+
+import {Todo} from '../todo';
+import {TodoService} from '../todo.service';
 @Component({
   selector: 'app-container',
-  imports: [CommonModule, FormsModule,EditmodalComponent],
+  imports: [CommonModule, FormsModule],
   templateUrl: './container.component.html',
   styleUrl: './container.component.css'
 })
 export class ContainerComponent {
-
- @Input() todos: Todo[]=[];
+constructor(private todoService: TodoService){}
+todos: Todo[] =[];
+ngOnInit():void{
+this.todoService.getTodos().subscribe((data:Todo[])=>{
+  console.log(data);
+  this.todos=data;
+  })
+  }
  @Output() editclose = new EventEmitter<void>();
 editModal: boolean = false;
 
@@ -23,29 +27,47 @@ title: string = '';
 desc: string = '';
 editIndex: number | null = null;
 
-deleteTodo(index:number){
-
-  this.todos.splice(index, 1);
-  console.log(this.todos);
+deleteTodo(id: number): void {
+  this.todoService.deleteTodo(id).subscribe({
+    next: () => {
+      console.log('Todo deleted successfully');
+      window.location.reload(); // Reload the page
+    },
+    error: (error) => {
+      console.error('Error deleting todo:', error);
+    }
+  });
 }
 
- showTodo(index:number){
-    this.editIndex = index;
-       this.title = this.todos[index].title; // Pre-fill title
-       this.desc = this.todos[index].desc;
-       this.editModal = true;
+ showTodo(id:number){
+    this.editIndex = id;
+      const todo = this.todos.find((t) => t.id === id);
+          if (todo) {
+//             this.editIndex = id; // Store the id
+            this.title = todo.title; // Prefill title
+            this.desc = todo.desc; // Prefill description
+            this.editModal = true; // Open modal
+          }
+//        this.editModal = true;
    }
  closeModal(): void {
     this.editModal = false;
        this.editclose.emit();
      }
     editTodo(): void {
-       if (this.editIndex !== null) {
-         this.todos[this.editIndex] = {
-           title: this.title,
-           desc: this.desc
-         };
-         this.closeModal();
+if(this.editIndex!==null)
+      {
+        const updatedTodo = { title: this.title, desc: this.desc };
+        this.todoService.updateTodo(this.editIndex,updatedTodo).subscribe(() => {
+                                                                                                          // Update the todo locally
+                                                                                                          const index = this.todos.findIndex((t) => t.id === this.editIndex);
+                                                                                                          if (index > -1) {
+                                                                                                            this.todos[index] = { ...this.todos[index], ...updatedTodo };
+                                                                                                          }
+
+                                                                                                          this.closeModal(); // Close modal after saving
+                                                                                                        })
+                                                                                                      }
        }
-}
+
 }

@@ -1,25 +1,29 @@
 import { Component, Output } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
+import {HttpClientModule} from '@angular/common/http';
 import {ContainerComponent} from './container/container.component';
 import {ModalComponent} from './modal/modal.component';
-type Todos={
-    title: string;
-    desc: string;
-  };
+import {Todo} from './todo';
+import {TodoService} from './todo.service';
+// type Todos={
+//     title: string;
+//     desc: string;
+//   };
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ContainerComponent,ModalComponent,CommonModule],
+  imports: [RouterOutlet, ContainerComponent,ModalComponent,CommonModule,HttpClientModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-    title: string = '';
-    desc: string = '';
-  arr: Todos[] = [];
+//     title: string = '';
+//     desc: string = '';
+//   arr: Todos[] = [];
+// constructor(private todoService: TodoService){}
+
 onSubmit(event: Event) {
-      event.preventDefault(); // Prevent form submission
+//       event.preventDefault(); // Prevent form submission
       console.log('Search submitted!');
 }
 showModal: boolean = false;
@@ -31,10 +35,9 @@ showModal: boolean = false;
    onClose(): void {
       this.showModal = false;
     }
-  addTodo(todo: Todos): void {
-      this.arr.push(todo);
-      console.log(this.arr);
-    }
+//   addTodo(todo: Todo): void {
+//      this.todoService.addTodos(todo).subscribe()
+//     }
   editClose(){
     this.editModal=false;
     }

@@ -1,0 +1,32 @@
+body {
+        background-color: #f8f9fa;
+    }
+    .navbar {
+        background-color: #81c784; /* Light Green */
+    }
+    .navbar-brand {
+        color: white !important;
+    }
+    .container {
+        margin-top: 100px;
+    }
+    .card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .card-header {
+        background-color: #81c784; /* Light Green */
+        color: white;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    .btn-custom {
+        background-color: #81c784; /* Light Green */
+        color: white;
+        border-radius: 5px;
+    }
+    .btn-custom:hover {
+        background-color: #66bb6a; /* Darker Green */
+        color: white;
+    }
