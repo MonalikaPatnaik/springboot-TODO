@@ -10,21 +10,21 @@ export class TodoService {
 
 constructor(private http: HttpClient) {}
 
-private baseUrl= "http://localhost:8080/api/todos";
+private baseUrl= "https://todo-r1rc.onrender.com/api/todos";
 
   getTodos():Observable<Todo[]>{
-    return this.http.get<Todo[]>('http://localhost:8080/api/todos');
+    return this.http.get<Todo[]>(this.baseUrl);
     }
 
   addTodos(todo: Todo):Observable<Todo>{
-      return this.http.post<Todo>('http://localhost:8080/api/todos',todo);
+      return this.http.post<Todo>(this.baseUrl,todo);
       }
 
     updateTodo(id:number, todo:Todo){
-      return this.http.patch<Todo>(`http://localhost:8080/api/todos/${id}`,todo);
+      return this.http.patch<Todo>(`${this.baseUrl}/${id}`,todo);
       }
 
     deleteTodo(id:number): Observable<void>{
-       return this.http.delete<void>(`http://localhost:8080/api/todos/${id}`);
+       return this.http.delete<void>(`${this.baseUrl}/${id}`);
       }
 }
