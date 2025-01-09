@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "https://springboot-todo.vercel.app")
+@CrossOrigin(origins = "https://todo-ten-vert.vercel.app")
 @RestController
 @RequestMapping("api/")
 public class HomeController {
