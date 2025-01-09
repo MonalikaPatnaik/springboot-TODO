@@ -1,5 +1,4 @@
 import { Component, Output } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 import {ContainerComponent} from './container/container.component';
@@ -9,7 +8,7 @@ import {TodoService} from './todo.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ContainerComponent,ModalComponent,CommonModule,HttpClientModule],
+  imports: [ContainerComponent,ModalComponent,CommonModule,HttpClientModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

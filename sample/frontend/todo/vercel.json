@@ -1,12 +1,11 @@
 {
   "version": 2,
-  "routes": [
+  "rewrites": [
     {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
-  ]
+  ],
+  "buildCommand": "ng build",
+  "outputDirectory": "dist/todo"
 }
