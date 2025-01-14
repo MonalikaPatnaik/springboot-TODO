@@ -43,12 +43,11 @@ deleteTodo(id: number): void {
     this.editIndex = id;
       const todo = this.todos.find((t) => t.id === id);
           if (todo) {
-//             this.editIndex = id; // Store the id
             this.title = todo.title; // Prefill title
             this.desc = todo.desc; // Prefill description
-            this.editModal = true; // Open modal
+            this.editModal = true;
           }
-//        this.editModal = true;
+
    }
  closeModal(): void {
     this.editModal = false;

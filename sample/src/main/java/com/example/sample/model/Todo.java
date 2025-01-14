@@ -1,6 +1,11 @@
 package com.example.sample.model;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Data
 public class Todo {
@@ -9,38 +14,4 @@ public class Todo {
     private long id;
     private String title;
     private String desc;
-
-
-    public Todo(){
-
-    }
-    public Todo(String title, String desc){
-        super();
-        this.title = title;
-        this.desc = desc;
-    }
-
-    public long getId(){
-        return id;
-    }
-
-    public void setId(long id){
-        this.id=id;
-    }
-    // Getters and Setters
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
 }

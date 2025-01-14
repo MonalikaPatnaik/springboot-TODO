@@ -8,14 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "https://todo-ten-vert.vercel.app",
-        allowedHeaders = "*",
-        methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
-                RequestMethod.DELETE, RequestMethod.PATCH},
-        allowCredentials = "true")
 @RestController
 @RequestMapping("api/")
-public class HomeController {
+public class TodoController {
      @Autowired
      private TodoRepository todoRepository;
 
